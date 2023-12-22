@@ -1,0 +1,54 @@
+$allPaddingItems: 20px;
+$allColor: #FFFFFF;
+$borderColor: #DFE5EC;
+$fontSize: 20px;
+
+.main{
+  display: flex;
+  justify-content: space-between;
+  //border: 1px solid $borderColor;
+  margin: 0 25px 0 25px;
+}
+.d1{
+ flex-grow: 1;
+  padding: $allPaddingItems 3px $allPaddingItems 3px;
+  border: 1px solid $borderColor;
+  border-radius: 10px 0 0 10px;
+  background-color: $allColor;
+}
+.d1:hover{
+  background-color: #2196F3;
+  color: #FFFFFF;
+  border-radius: 10px 0 0 10px;
+}
+.d2{
+  flex-grow: 1;
+  padding: $allPaddingItems;
+  border-right: 1px solid $borderColor;
+  border-top: 1px solid $borderColor;
+  border-bottom: 1px solid $borderColor;
+  background-color: $allColor;
+}
+.d2:hover{
+  background-color: #2196F3;
+  color: #FFFFFF;
+}
+.d3{
+  flex-grow: 1;
+  padding: $allPaddingItems;
+  background-color: $allColor;
+  border-radius: 0 10px 10px 0;
+  border-top: 1px solid $borderColor;
+  border-right: 1px solid $borderColor;
+  border-bottom: 1px solid $borderColor;
+}
+.d3:hover{
+  background-color: #2196F3;
+  color: #FFFFFF;
+  border-radius: 0 10px 10px 0;
+}
+.d1 p,.d2 p,.d3 p{
+  font-size: $fontSize;
+  text-align: center;
+  margin: 0;
+}

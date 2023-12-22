@@ -1,0 +1,18 @@
+$allColor: #FFFFFF;
+.main{
+  background-color: $allColor;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 230px;
+  margin-left: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 #DFE5EC;
+}
+.text{
+  padding: 0;
+  margin: 0;
+}
+.checkBox{
+  padding-top: 20px;
+}

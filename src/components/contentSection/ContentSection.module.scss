@@ -1,0 +1,28 @@
+.main{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+.leftSection{
+  width: 80px;
+  min-height: 100px;
+  flex-grow: 1;
+}
+.rightSection{
+  width: 80px;
+  min-height: 100px;
+  flex-grow: 2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//$color: #5555;
