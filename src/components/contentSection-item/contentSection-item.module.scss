@@ -22,11 +22,14 @@ $hardTextColor: black;
 }
 .cardFooter{
   display: flex;
-  justify-content: space-between;
+
 }
 .hardText{
   color: $hardTextColor;
 }
 .smoothText{
   color: $smoothTextColor;
+}
+.info{
+  margin-right: 9vw;
 }

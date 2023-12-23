@@ -13,29 +13,29 @@ const ContentSectionItem = () => {
                 <img src={s7}></img>
             </div>
             <div className={classes.cardFooter}>
-                <div>
+                <div className={classes.info}>
                     <p className={classes.smoothText}>MOW - HKT</p>
                     <p className={classes.hardText}>10:00 - 10:00</p>
                 </div>
-                <div>
+                <div className={classes.info}>
                     <p className={classes.smoothText}>В ПУТИ</p>
                     <p className={classes.hardText}>21ч 15м</p>
                 </div>
-                <div>
+                <div className={classes.info}>
                     <p className={classes.smoothText}>2 ПЕРЕСАДКИ</p>
                     <p className={classes.hardText}>HKG, JNB</p>
                 </div>
             </div>
             <div className={classes.cardFooter}>
-                <div>
+                <div className={classes.info}>
                     <p className={classes.smoothText}>MOW - HKT</p>
                     <p className={classes.hardText}>10:00 - 10:00</p>
                 </div>
-                <div>
+                <div className={classes.info}>
                     <p className={classes.smoothText}>В ПУТИ</p>
                     <p className={classes.hardText}>21ч 15м</p>
                 </div>
-                <div>
+                <div className={classes.info}>
                     <p className={classes.smoothText}>2 ПЕРЕСАДКИ</p>
                     <p className={classes.hardText}>HKG, JNB</p>
                 </div>

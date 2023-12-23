@@ -9,6 +9,11 @@
   box-shadow: 0 0 10px 0 #DFE5EC;
 }
 
+.checkBoxList {
+  display: flex;
+  flex-direction: column;
+}
+
 .text {
   padding: 0;
   margin: 0;

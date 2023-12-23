@@ -21,7 +21,6 @@
 
 .cardFooter {
   display: flex;
-  justify-content: space-between;
 }
 
 .hardText {
@@ -30,6 +29,10 @@
 
 .smoothText {
   color: #A0B0B9;
+}
+
+.info {
+  margin-right: 9vw;
 }
 
 /*# sourceMappingURL=contentSection-item.module.css.map */

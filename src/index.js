@@ -10,7 +10,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // api.getInfo()
 //     .then((res) => console.log(res))
 //     .catch((error) => console.log(error))
+const style ={
 
+}
 
 const Main = () => {
     return (
