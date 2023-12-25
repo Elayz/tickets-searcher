@@ -1,28 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import AviaService from "./apiSerwise";
-import Header from "./components/header/header";
-import ContentSection from "./components/contentSection/contentSection";
-
+import { Provider } from 'react-redux'
+import Main from "./components/app/app";
+import { createStore } from "redux";
+import reducer from "./reducer";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-// const api  = new AviaService()
-// api.getInfo()
-//     .then((res) => console.log(res))
-//     .catch((error) => console.log(error))
-const style ={
-
-}
-
-const Main = () => {
-    return (
-    <div>
-        <Header></Header>
-        <ContentSection></ContentSection>
-    </div>
-    )
-}
+const store = createStore(reducer);
 
 root.render(
-    <Main></Main>
+    <Provider store={store}>
+        <Main></Main>
+    </Provider>
 );
+
+
+

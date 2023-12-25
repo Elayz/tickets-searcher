@@ -4,8 +4,6 @@ import ContentSectionItem from "../contentSection-item/contentSection-item.js";
 import UpHeader from "../upHeaderSections/upHeaderSections";
 import Filters from "../filters/filters";
 
-
-
 const ContentSection = () => {
     const inputValue = [{value: 'hehe1', id:1},{value: 'hehe2', id:2},{value: 'hehe3', id:3}]
     const elsements = inputValue.map((item) => (
@@ -26,5 +24,6 @@ const ContentSection = () => {
         </div>
     );
 };
+
 export default ContentSection;
 

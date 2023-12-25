@@ -1,53 +1,57 @@
-import React, {useState} from 'react';
-import classes from './filters.module.scss'
-import { Radio } from 'antd';
-const Filters = () => {
-    const [value, setValue] = useState(1);
-    const onChange = (e) => {
-        console.log('radio checked', e.target.value);
-        setValue(e.target.value);
-    };
+import React, {useEffect} from 'react';
+import classes from './filters.module.scss';
+import  { connect } from 'react-redux';
+import * as actions from "../../actions";
+import { bindActionCreators } from "redux";
+import { Checkbox, Radio } from 'antd';
+import {onChange} from "../../actions";
+
+const CheckboxGroup = Checkbox.Group;
+const plainOptions = ['Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки'];
+
+const Filters = ({ value, onCheckAllChange, onChange, first }) => {
+    useEffect(() => {
+        first()
+        return () => {
+
+        };
+    }, []);
 
     return (
         <div className={classes.main}>
-            <p className={classes.text}>КОЛИЧЕСТВО ПЕРЕСАДОК</p>
-            <Radio.Group className={classes.checkBoxList}  onChange={onChange} value={value}>
-                <Radio className={classes.checkBox} value={1}>Все</Radio>
-                <Radio className={classes.checkBox} value={2}>Без пересадок</Radio>
-                <Radio className={classes.checkBox} value={3}>1 пересадка</Radio>
-                <Radio className={classes.checkBox} value={4}>2 пересадки</Radio>
-                <Radio className={classes.checkBox} value={5}>3 пересадки</Radio>
-            </Radio.Group>
+            <div>
+                <Checkbox
+                    onChange={onCheckAllChange}
+                    checked={value.checkAll}
+                >
+                    Все
+                </Checkbox>
+            </div>
+            <br/>
+
+            <CheckboxGroup
+                className={classes.checkBoxList}
+                options={plainOptions}
+                value={value.checkedList}
+                onChange={onChange}/>
+
         </div>
     );
 };
-export default Filters;
-// const Filters = () => {
-//     return (
-//         <div className={classes.main}>
-//             <p className={classes.text}>КОЛИЧЕСТВО ПЕРЕСАДОК</p>
-//             <label className={classes.checkBox}>
-//                 <input type="checkbox"/>
-//                 <span>Все</span>
-//             </label>
-//             <label className={classes.checkBox}>
-//                 <input type="checkbox"/>
-//                 <span>Без пересадок</span>
-//             </label>
-//             <label className={classes.checkBox}>
-//                 <input type="checkbox"/>
-//                 <span>1 пересадка</span>
-//             </label>
-//             <label className={classes.checkBox}>
-//                 <input type="checkbox"/>
-//                 <span>2 пересадки</span>
-//             </label>
-//             <label className={classes.checkBox}>
-//                 <input type="checkbox"/>
-//                 <span>3 пересадки</span>
-//             </label>
-//         </div>
-//     );
-// };
-// export default Filters;
+
+
+const mapStateToProps = (state) => {
+    return {
+        value: state,
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    const {onCheckAllChange, onChange, first} = bindActionCreators(actions, dispatch);
+    return {
+        onCheckAllChange,
+        onChange,
+        first,
+    }
+};
+export default connect(mapStateToProps, actions)(Filters);
 
