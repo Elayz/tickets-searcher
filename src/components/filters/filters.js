@@ -1,22 +1,14 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import classes from './filters.module.scss';
 import  { connect } from 'react-redux';
 import * as actions from "../../actions";
 import { bindActionCreators } from "redux";
 import { Checkbox, Radio } from 'antd';
-import {onChange} from "../../actions";
 
 const CheckboxGroup = Checkbox.Group;
 const plainOptions = ['Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки'];
 
-const Filters = ({ value, onCheckAllChange, onChange, first }) => {
-    useEffect(() => {
-        first()
-        return () => {
-
-        };
-    }, []);
-
+const Filters = ({ value, onCheckAllChange, onChange }) => {
     return (
         <div className={classes.main}>
             <div>
@@ -40,18 +32,17 @@ const Filters = ({ value, onCheckAllChange, onChange, first }) => {
 };
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {     //для переменных из стейт
     return {
         value: state,
     }
 }
-const mapDispatchToProps = (dispatch) => {
-    const {onCheckAllChange, onChange, first} = bindActionCreators(actions, dispatch);
-    return {
-        onCheckAllChange,
-        onChange,
-        first,
-    }
-};
+// const mapDispatchToProps = (dispatch) => { //для функций из редьюсера
+//     const {onCheckAllChange, onChange} = bindActionCreators(actions, dispatch);
+//     return {
+//         onCheckAllChange,
+//         onChange,
+//     }
+// };
 export default connect(mapStateToProps, actions)(Filters);
 

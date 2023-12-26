@@ -8,6 +8,8 @@ $fontSize: 20px;
   justify-content: space-between;
   //border: 1px solid $borderColor;
   margin: 0 25px 0 25px;
+  font-size: $fontSize;
+  text-align: center;
 }
 .d1{
  flex-grow: 1;
@@ -47,8 +49,4 @@ $fontSize: 20px;
   color: #FFFFFF;
   border-radius: 0 10px 10px 0;
 }
-.d1 p,.d2 p,.d3 p{
-  font-size: $fontSize;
-  text-align: center;
-  margin: 0;
-}
+

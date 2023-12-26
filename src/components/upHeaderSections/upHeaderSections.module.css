@@ -2,6 +2,8 @@
   display: flex;
   justify-content: space-between;
   margin: 0 25px 0 25px;
+  font-size: 20px;
+  text-align: center;
 }
 
 .d1 {
@@ -46,12 +48,6 @@
   background-color: #2196F3;
   color: #FFFFFF;
   border-radius: 0 10px 10px 0;
-}
-
-.d1 p, .d2 p, .d3 p {
-  font-size: 20px;
-  text-align: center;
-  margin: 0;
 }
 
 /*# sourceMappingURL=upHeaderSections.module.css.map */
