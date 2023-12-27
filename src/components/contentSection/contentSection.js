@@ -3,15 +3,30 @@ import classes from './ContentSection.module.scss'
 import ContentSectionItem from "../contentSection-item/contentSection-item.js";
 import UpHeader from "../upHeaderSections/upHeaderSections";
 import Filters from "../filters/filters";
+import  { connect } from 'react-redux';
+import ContentSectionItemError from "../contentSection-itemError/contentSection-itemError";
 
-const ContentSection = () => {
-    const inputValue = [{value: 'hehe1', id:1},{value: 'hehe2', id:2},{value: 'hehe3', id:3}]
-    const elsements = inputValue.map((item) => (
-        <ContentSectionItem
-            key={item.id}
-            value={item.value}
-        ></ContentSectionItem>
-    ));
+
+
+const ContentSection = ({ ticketsData }) => {
+    let fiveData = []
+    let elements
+    if (ticketsData.length > 5) {
+        for (let i = 0; i<5; i++){
+            fiveData.push(ticketsData[i]);
+        }
+        console.log(fiveData)
+        elements = fiveData.map((item) => (
+                <ContentSectionItem
+                    key={item.price}
+                    IATA_CODE={item.carrier}
+                    price={item.price}
+                    segments={item.segments}
+                ></ContentSectionItem>
+        ));
+    }else{
+        elements = <ContentSectionItemError/>;
+    }
     return (
         <div className={classes.main}>
             <div className={classes.leftSection}>
@@ -19,11 +34,16 @@ const ContentSection = () => {
             </div>
             <div className={classes.rightSection}>
                 <UpHeader></UpHeader>
-                {elsements}
+                {elements}
             </div>
         </div>
     );
 };
 
-export default ContentSection;
+const mapStateToProps = (state) => {     //для переменных из стейт
+    return {
+        ticketsData: state.ticketsData,
+    }
+}
+export default connect(mapStateToProps)(ContentSection);
 

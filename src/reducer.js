@@ -3,6 +3,8 @@ const initState = {
     indeterminate: false,
     checkAll: false,
     filterState: null,
+    ticketsData: [],
+
 }
 const reducer = (state = initState, action) => {
     const plainOptions = ['Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки'];
@@ -22,6 +24,11 @@ const reducer = (state = initState, action) => {
         case 'sort':
             return {...state,
                 filterState: action.payload.target.id,
+            }
+        case 'loadTicketsData':
+            // console.log(action.payload)
+            return {...state,
+                ticketsData: action.payload,
             }
         default:
             return state;

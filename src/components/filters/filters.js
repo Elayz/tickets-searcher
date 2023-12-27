@@ -14,8 +14,7 @@ const Filters = ({ value, onCheckAllChange, onChange }) => {
             <div>
                 <Checkbox
                     onChange={onCheckAllChange}
-                    checked={value.checkAll}
-                >
+                    checked={value.checkAll}>
                     Все
                 </Checkbox>
             </div>
@@ -26,7 +25,6 @@ const Filters = ({ value, onCheckAllChange, onChange }) => {
                 options={plainOptions}
                 value={value.checkedList}
                 onChange={onChange}/>
-
         </div>
     );
 };

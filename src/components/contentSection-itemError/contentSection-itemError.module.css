@@ -1,0 +1,11 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 #DFE5EC;
+  margin: 25px;
+  padding: 30px 30px 10px 30px;
+}
+
+/*# sourceMappingURL=contentSection-itemError.module.css.map */
