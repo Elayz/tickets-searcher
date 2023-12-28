@@ -109,7 +109,7 @@ const ContentSectionItem = (props) => {
 
             <div className={classes.cardFooter}>
                 <div className={classes.info}>
-                    <p className={classes.smoothText}>{segments[0].origin} - {segments[1].destination}</p>
+                    <p className={classes.smoothText}>{segments[1].origin} - {segments[1].destination}</p>
                     <p className={classes.hardText}>{convertDateToHoursAndMinutes(takeoff2)} - {addTimes(takeoff2, durationMin2)}</p>
                 </div>
                 <div className={classes.info}>

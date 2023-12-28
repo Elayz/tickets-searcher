@@ -1,8 +1,7 @@
 const initState = {
     checkedList: [],
-    indeterminate: false,
     checkAll: false,
-    filterState: null,
+    filterState: 'optimal',
     ticketsData: [],
 
 }
@@ -12,13 +11,11 @@ const reducer = (state = initState, action) => {
         case 'onChange':
             return {...state,
                 checkedList: action.payload,
-                indeterminate: !!state.checkedList.length && (state.checkedList.length < plainOptions.length),
                 checkAll: action.payload.length === plainOptions.length,
             };
         case 'onCheckAllChange':
             return {...state,
                 checkedList: action.payload.target.checked ? plainOptions : [],
-                indeterminate: false,
                 checkAll: action.payload.target.checked,
             };
         case 'sort':
