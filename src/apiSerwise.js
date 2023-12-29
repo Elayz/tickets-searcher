@@ -4,31 +4,31 @@ export default class AviaService{
     constructor() {
         this.url = 'https://front-test.dev.aviasales.ru/search';
         this.searchIdUrl = 'https://aviasales-test-api.kata.academy/search/';
-        this.resUrl = 'https://aviasales-test-api.kata.academy/'
-    }
+        this.resUrl = 'https://aviasales-test-api.kata.academy/';
+        this.id = '';
+    };
     async getSearchId(url) {
         try{
-            let searchId = (await fetch(`${url}`)).json();
-            return searchId
+            return (await fetch(`${url}`)).json()
         }
         catch (e) {
             throw new Error("trouble in fetch((((")
         }
     };
     async getRes(url, searchId) {
-        try{
-            const res = await fetch(`${url}tickets?searchId=${searchId}`)
-            return res
-        }
-        catch (e) {
-            throw new Error("trouble in fetch((((")
+        try {
+            return await fetch(`${url}tickets?searchId=${searchId}`);
+        } catch (error) {
+            return 0;
         }
     };
 
-    async getInfo(){
+    async getId(){
         const searchId = await this.getSearchId(this.searchIdUrl);
-        let id = searchId.searchId
-        const res = await this.getRes(this.resUrl, id);
-        return res.json();
+        this.id = searchId.searchId
     }
+    async getInfo(){
+        const res = await this.getRes(this.resUrl, this.id);
+        return res.json();
+    };
 }

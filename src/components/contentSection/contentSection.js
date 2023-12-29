@@ -7,10 +7,11 @@ import  { connect } from 'react-redux';
 import ContentSectionItemError from "../contentSection-itemError/contentSection-itemError";
 import FooterButton from "../footerButton/footerButton";
 import Spiner from "../spin/spin";
+import ProgressSpin from "../progressSpin/progressSpin";
 
 let filtersMass = [];
 
-const ContentSection = ({ checkedList, ticketsData, filterState }) => {
+const ContentSection = ({ progressSpinScore, allDataIsLoaded, checkedList, ticketsData, filterState }) => {
     let index = 0;
     let error = false;
     ticketsData.map((item) => {
@@ -85,8 +86,11 @@ const ContentSection = ({ checkedList, ticketsData, filterState }) => {
                 </div>
                 <div className={classes.rightSection}>
                     <UpHeader></UpHeader>
+                    <ProgressSpin
+                        progressSpinScore={progressSpinScore}>
+                    </ProgressSpin>
                     {elements}
-                    {!error ? <FooterButton></FooterButton> : <Spiner></Spiner>}
+                    {!error ? <FooterButton></FooterButton> : <div></div>}
                 </div>
             </div>
         );
@@ -96,7 +100,9 @@ const mapStateToProps = (state) => {     //для переменных из ст
     return {
         ticketsData: state.ticketsData,
         filterState: state.filterState,
-        checkedList: state.checkedList
+        checkedList: state.checkedList,
+        allDataIsLoaded: state.allDataIsLoaded,
+        progressSpinScore: state.progressSpinScore,
     };
 };
 export default connect(mapStateToProps)(ContentSection);

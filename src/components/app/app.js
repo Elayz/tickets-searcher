@@ -5,18 +5,30 @@ import AviaService from "../../apiSerwise";
 import  { connect } from 'react-redux';
 import * as actions from "../../actions";
 
+const serv = new AviaService();
+serv.getId()
 
-
-const Main = ({ loadTicketsData }) => {
+const Main = ({ loadTicketsData, allDataIsLoaded }) => {
     let data
-    const serv = new AviaService();
     function onLoad() {
         serv.getInfo()
             .then((res) => {
-                data=res.tickets
-                loadTicketsData(data)
+                let iterv = setInterval(() => {
+                    if(res.stop !== true){
+                        data=res.tickets
+                        loadTicketsData(data)
+                        onLoad();
+                        clearInterval(iterv);
+                    }else{
+                        clearInterval(iterv);
+                        allDataIsLoaded();
+                        return 0;
+                    }
+                },200)
             })
-            .catch((err) => console.error(`smth is wrong: ${err}`))
+            .catch((err) => {
+                onLoad()
+            })
     }
     window.onload = onLoad;
 
@@ -34,10 +46,4 @@ const mapStateToProps = (state) => {     //для переменных из ст
         data: state,
     }
 }
-// const mapDispatchToProps = (dispatch) => { //для функций из редьюсера
-//     const { onSortTickets } = bindActionCreators(actions, dispatch);
-//     return {
-//         onSortTickets
-//     }
-// };
 export default connect(mapStateToProps, actions)(Main);

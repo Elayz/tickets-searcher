@@ -3,7 +3,8 @@ const initState = {
     checkAll: false,
     filterState: 'optimal',
     ticketsData: [],
-
+    allDataIsLoaded: false,
+    progressSpinScore: 0,
 }
 const reducer = (state = initState, action) => {
     const plainOptions = ['Без пересадок', '1 пересадки', '2 пересадки', '3 пересадки'];
@@ -23,9 +24,13 @@ const reducer = (state = initState, action) => {
                 filterState: action.payload.target.id,
             }
         case 'loadTicketsData':
-            // console.log(action.payload)
             return {...state,
-                ticketsData: action.payload,
+                ticketsData: [...state.ticketsData, ...action.payload],
+                progressSpinScore: state.progressSpinScore + 7,
+            }
+        case 'allDataIsLoaded':
+            return {...state,
+                allDataIsLoaded: true,
             }
         default:
             return state;
