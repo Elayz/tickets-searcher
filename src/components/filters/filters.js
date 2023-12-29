@@ -6,7 +6,7 @@ import { bindActionCreators } from "redux";
 import { Checkbox, Radio } from 'antd';
 
 const CheckboxGroup = Checkbox.Group;
-const plainOptions = ['Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки'];
+const plainOptions = ['Без пересадок', '1 пересадки', '2 пересадки', '3 пересадки'];
 
 const Filters = ({ value, onCheckAllChange, onChange }) => {
     return (

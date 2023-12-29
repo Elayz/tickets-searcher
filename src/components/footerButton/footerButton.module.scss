@@ -1,0 +1,16 @@
+$allPaddingItems: 20px;
+$allColor: #FFFFFF;
+$borderColor: #DFE5EC;
+$fontSize: 20px;
+.main{
+  display: flex;
+  flex-direction: column;
+  background-color: #2196F3;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 #DFE5EC;
+  margin: 25px;
+  padding: 30px 30px 30px 30px;
+  font-size: $fontSize;
+  color: #FFFFFF;
+  text-align: center;
+}

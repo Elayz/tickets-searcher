@@ -6,7 +6,7 @@ const initState = {
 
 }
 const reducer = (state = initState, action) => {
-    const plainOptions = ['Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки'];
+    const plainOptions = ['Без пересадок', '1 пересадки', '2 пересадки', '3 пересадки'];
     switch (action.type) {
         case 'onChange':
             return {...state,

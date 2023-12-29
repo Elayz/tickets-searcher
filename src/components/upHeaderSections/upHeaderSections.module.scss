@@ -6,13 +6,12 @@ $fontSize: 20px;
 .main{
   display: flex;
   justify-content: space-between;
-  //border: 1px solid $borderColor;
   margin: 0 25px 0 25px;
   font-size: $fontSize;
   text-align: center;
 }
 .d1{
- flex-grow: 1;
+  flex-grow: 1;
   padding: $allPaddingItems 3px $allPaddingItems 3px;
   border: 1px solid $borderColor;
   border-radius: 10px 0 0 10px;

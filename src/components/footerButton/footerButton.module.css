@@ -1,0 +1,14 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  background-color: #2196F3;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 #DFE5EC;
+  margin: 25px;
+  padding: 30px 30px 30px 30px;
+  font-size: 20px;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+/*# sourceMappingURL=footerButton.module.css.map */

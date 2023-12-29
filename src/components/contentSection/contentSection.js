@@ -5,23 +5,22 @@ import UpHeader from "../upHeaderSections/upHeaderSections";
 import Filters from "../filters/filters";
 import  { connect } from 'react-redux';
 import ContentSectionItemError from "../contentSection-itemError/contentSection-itemError";
+import FooterButton from "../footerButton/footerButton";
+import Spiner from "../spin/spin";
 
 let filtersMass = [];
 
 const ContentSection = ({ checkedList, ticketsData, filterState }) => {
     let index = 0;
+    let error = false;
     ticketsData.map((item) => {
         item.index = index;
         index++;
     });
-    let minPrice = 150000;
     const reserveTicketsData = ticketsData;
     let avgvalue = 0;
-    let prefilterMass1 = [];
-    let prefilterMass2 = [];
-    let prefilterMass3 = [];
-    let prefilterMass4 = [];
-    let avg = [];
+    let fiveData = [];
+    let elements;
     if(filterState === 'cheap'){
         ticketsData = reserveTicketsData;
         ticketsData.sort((a, b) => a.price - b.price);
@@ -37,65 +36,60 @@ const ContentSection = ({ checkedList, ticketsData, filterState }) => {
         avgvalue = Math.floor(avgvalue / ticketsData.length)
         ticketsData = ticketsData.filter((item) => {
             return (
-                Math.floor(item.price / (item.segments[0].duration + item.segments[1].duration)) <= 32
+                Math.floor(item.price / (item.segments[0].duration + item.segments[1].duration)) <= 34
                 &&
-                Math.floor(item.price / (item.segments[0].duration + item.segments[1].duration)) >= 30);
+                Math.floor(item.price / (item.segments[0].duration + item.segments[1].duration)) >= 28);
         });
     }
 
-    // if(checkedList.includes('1 пересадка')){
-    //     prefilterMass1 = ticketsData.filter((item) =>{
-    //         return item.segments[0].stops.length === 1;
-    //     })
-    // }else{
-    //     prefilterMass1 = ticketsData.filter((item) =>{
-    //         return item.segments[0].stops.length !== 1;
-    //     })
-    // }
-    // if(checkedList.includes('2 пересадки')){
-    //     prefilterMass2 = ticketsData.filter((item) =>{
-    //         return item.segments[0].stops.length === 2;
-    //     })
-    // }else {
-    //     prefilterMass1 = ticketsData.filter((item) => {
-    //         return item.segments[0].stops.length !== 2;
-    //     })
-    // }
-    // filtersMass = [...prefilterMass2];
-    // console.log(filtersMass)
-    // console.log(ticketsData)
-
-    let fiveData = [];
-    let elements;
-    if (ticketsData.length > 5) {
-        for (let i = 0; i<5; i++){
-            fiveData.push(ticketsData[i]);
-        }
-
-
-
-        elements = fiveData.map((item) => (
+    function filterDataByStops(data, allowedStops) {
+        return data.filter(flight => {
+            const stopsCount = flight.segments.reduce((total, segment) => total + segment.stops.length, 0);
+            const stopType = stopsCount === 0 ? 'Без пересадок' : `${stopsCount} пересадки`;
+            return allowedStops.includes(stopType);
+        });
+    }
+    if (checkedList.includes('Без пересадок')
+        || checkedList.includes('1 пересадки')
+        || checkedList.includes('2 пересадки')
+        || checkedList.includes('3 пересадки')){
+        const filteredData = filterDataByStops(ticketsData, checkedList);
+        ticketsData = filteredData
+    }else{
+        ticketsData = [];
+    }
+        if (ticketsData.length > 0) {
+            if (ticketsData.length >= 5){
+                for (let i = 0; i < 5; i++) {
+                    fiveData.push(ticketsData[i]);
+                }
+            }else{
+                fiveData = ticketsData;
+            }
+            elements = fiveData.map((item) => (
                 <ContentSectionItem
                     key={item.index}
-                    IATA_CODE={item.carrier}
+                    IATA_CODE={item.carrier === undefined ? item.carrier="DP" : item.carrier}
                     price={item.price}
                     segments={item.segments}
                 ></ContentSectionItem>
-        ));
-    }else{
-        elements = <ContentSectionItemError/>;
-    }
-    return (
-        <div className={classes.main}>
-            <div className={classes.leftSection}>
-                <Filters></Filters>
+            ));
+        } else {
+            elements = <ContentSectionItemError/>;
+            error = true;
+        }
+        return (
+            <div className={classes.main}>
+                <div className={classes.leftSection}>
+                    <Filters></Filters>
+                </div>
+                <div className={classes.rightSection}>
+                    <UpHeader></UpHeader>
+                    {elements}
+                    {!error ? <FooterButton></FooterButton> : <Spiner></Spiner>}
+                </div>
             </div>
-            <div className={classes.rightSection}>
-                <UpHeader></UpHeader>
-                {elements}
-            </div>
-        </div>
-    );
+        );
 };
 
 const mapStateToProps = (state) => {     //для переменных из стейт
