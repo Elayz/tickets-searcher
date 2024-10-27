@@ -1,6 +1,16 @@
 .main {
   display: flex;
   justify-content: center;
+  user-select: none;
+}
+
+.imgClass {
+  border-radius: 50px;
+  transition: 0.1s;
+}
+
+.imgClass:hover {
+  transform: scale(1.1);
 }
 
 /*# sourceMappingURL=Header.module.css.map */

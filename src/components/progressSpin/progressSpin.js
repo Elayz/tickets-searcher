@@ -1,14 +1,15 @@
 import React from 'react';
 import { Progress, Space } from 'antd';
+import classes from "./progressSpin.module.scss";
 
 const style = {
-    width: '880px',
+    width: '640px',
     margin: '0px 0px -50px 25px'
 };
 
 const ProgressSpin = ({ progressSpinScore }) => (
     <Space wrap>
-        <Progress style={style} percent={progressSpinScore} />
+        <Progress className={ classes.spin} style={style} percent={progressSpinScore} />
     </Space>
 );
 export default ProgressSpin;

@@ -1,5 +1,13 @@
 .main{
   display: flex;
   justify-content: center;
+  user-select: none;
 }
-//$color: #5555;
+.imgClass{
+  border-radius: 50px;
+  transition: 0.1s;
+
+}
+.imgClass:hover{
+  transform: scale(1.1);
+}

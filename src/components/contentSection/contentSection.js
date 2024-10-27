@@ -1,17 +1,12 @@
-import React, { useContext } from 'react';
 import classes from './ContentSection.module.scss'
 import ContentSectionItem from "../contentSection-item/contentSection-item.js";
 import UpHeader from "../upHeaderSections/upHeaderSections";
 import Filters from "../filters/filters";
 import  { connect } from 'react-redux';
 import ContentSectionItemError from "../contentSection-itemError/contentSection-itemError";
-import FooterButton from "../footerButton/footerButton";
-import Spiner from "../spin/spin";
 import ProgressSpin from "../progressSpin/progressSpin";
 
-let filtersMass = [];
-
-const ContentSection = ({ progressSpinScore, allDataIsLoaded, checkedList, ticketsData, filterState }) => {
+const ContentSection = ({ progressSpinScore, checkedList, ticketsData, filterState }) => {
     let index = 0;
     let error = false;
     ticketsData.map((item) => {
@@ -86,11 +81,9 @@ const ContentSection = ({ progressSpinScore, allDataIsLoaded, checkedList, ticke
                 </div>
                 <div className={classes.rightSection}>
                     <UpHeader></UpHeader>
-                    <ProgressSpin
-                        progressSpinScore={progressSpinScore}>
-                    </ProgressSpin>
+                    <ProgressSpin progressSpinScore={progressSpinScore}></ProgressSpin>
                     {elements}
-                    {!error ? <FooterButton></FooterButton> : <div></div>}
+                    {/*{!error ? <FooterButton></FooterButton> : <div></div>}*/}
                 </div>
             </div>
         );

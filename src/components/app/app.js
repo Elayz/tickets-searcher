@@ -4,6 +4,7 @@ import React from "react";
 import AviaService from "../../apiSerwise";
 import  { connect } from 'react-redux';
 import * as actions from "../../actions";
+import classes from "./app.module.scss";
 
 const serv = new AviaService();
 serv.getId()
@@ -35,7 +36,7 @@ const Main = ({ loadTicketsData, allDataIsLoaded }) => {
 
 
     return (
-        <div>
+        <div className={classes.main}>
             <Header></Header>
             <ContentSection></ContentSection>
         </div>

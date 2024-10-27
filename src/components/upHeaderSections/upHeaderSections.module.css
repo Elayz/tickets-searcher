@@ -12,12 +12,18 @@
   border: 1px solid #DFE5EC;
   border-radius: 10px 0 0 10px;
   background-color: #FFFFFF;
+  transition: 0.2s;
+  user-select: none;
 }
 
 .d1:hover {
   background-color: #2196F3;
   color: #FFFFFF;
   border-radius: 10px 0 0 10px;
+}
+
+.d1:active {
+  transform: scale(0.97);
 }
 
 .d2 {
@@ -27,11 +33,17 @@
   border-top: 1px solid #DFE5EC;
   border-bottom: 1px solid #DFE5EC;
   background-color: #FFFFFF;
+  transition: 0.2s;
+  user-select: none;
 }
 
 .d2:hover {
   background-color: #2196F3;
   color: #FFFFFF;
+}
+
+.d2:active {
+  transform: scale(0.97);
 }
 
 .d3 {
@@ -42,12 +54,18 @@
   border-top: 1px solid #DFE5EC;
   border-right: 1px solid #DFE5EC;
   border-bottom: 1px solid #DFE5EC;
+  transition: 0.2s;
+  user-select: none;
 }
 
 .d3:hover {
   background-color: #2196F3;
   color: #FFFFFF;
   border-radius: 0 10px 10px 0;
+}
+
+.d3:active {
+  transform: scale(0.97);
 }
 
 /*# sourceMappingURL=upHeaderSections.module.css.map */

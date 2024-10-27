@@ -5,7 +5,7 @@ import logo from '../imgs/Logo.svg'
 const Header = () => {
     return (
         <div className={classes.main}>
-            <img src={logo}></img>
+            <img className={classes.imgClass} src={logo}></img>
         </div>
     );
 };

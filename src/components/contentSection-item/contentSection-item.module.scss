@@ -10,6 +10,10 @@ $hardTextColor: black;
   box-shadow: 0 0 10px 0 #DFE5EC;
   margin: 25px;
   padding: 30px 30px 10px 30px;
+  transition: 0.1s;
+}
+.main:hover{
+  transform: scale(1.03);
 }
 .cardHeader{
   display: flex;
